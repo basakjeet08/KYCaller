@@ -5,6 +5,10 @@
     <!-- This permission lets you give toast even when the app is not running -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- These permissions are required for the Broadcast receiver -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -34,6 +38,16 @@
                 <action android:name="android.telecom.CallScreeningService" />
             </intent-filter>
         </service>
+
+        <!-- This receiver is made for devices <Android 10 or API 29 -->
+        <receiver
+            android:name=".services.BroadcastCallListener"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>
