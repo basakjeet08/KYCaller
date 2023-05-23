@@ -27,7 +27,7 @@
 
         <!-- This service is added show that the app gets notified when someone calls -->
         <service
-            android:name=".core.services.CallListener"
+            android:name=".services.CallListener"
             android:exported="true"
             android:permission="android.permission.BIND_SCREENING_SERVICE">
             <intent-filter>

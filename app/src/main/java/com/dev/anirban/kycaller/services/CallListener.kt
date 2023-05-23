@@ -1,4 +1,4 @@
-package com.dev.anirban.kycaller.core.services
+package com.dev.anirban.kycaller.services
 
 /**
  * This class implements the [CallListenerInterface] abstract class which has all the function
