@@ -22,7 +22,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.dev.anirban.kycaller.core.ui.theme.KYCallerTheme
-import com.dev.anirban.kycaller.services.BroadcastCallListener
+import com.dev.anirban.kycaller.feature_call_listener.impl.BroadCastReceiverImpl
 
 /**
  * This is the entry point of the app
@@ -30,7 +30,7 @@ import com.dev.anirban.kycaller.services.BroadcastCallListener
 class MainActivity : ComponentActivity() {
 
     // This Class is the Broadcast Receiver Class which receives the BroadCast and triggers the App
-    private val broadcastCallListener = BroadcastCallListener()
+    private val broadcastReceiver = BroadCastReceiverImpl()
 
     // This class is a inner class which handles all the permission
     private val permissionManager = PermissionManager()
@@ -215,7 +215,7 @@ class MainActivity : ComponentActivity() {
                     val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
 
                     // Registering the  broadcast receiver
-                    registerReceiver(broadcastCallListener, filter)
+                    registerReceiver(broadcastReceiver, filter)
                 }
             }
         }

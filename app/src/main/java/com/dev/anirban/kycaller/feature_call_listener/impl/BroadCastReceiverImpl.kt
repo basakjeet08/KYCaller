@@ -1,19 +1,16 @@
-package com.dev.anirban.kycaller.services
+package com.dev.anirban.kycaller.feature_call_listener.impl
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.telephony.TelephonyManager
 import android.widget.Toast
+import com.dev.anirban.kycaller.feature_call_listener.CallStateReceiver
 
-/**
- * This class extends the [BroadcastReceiver] class which helps in receiving BroadCast
- * signals from the android device
- *
- * This class specifically Watches for ACTION_PHONE_STATE_CHANGED event which
- * is basically a Call State change event
- */
-class BroadcastCallListener : BroadcastReceiver() {
+class BroadCastReceiverImpl : CallStateReceiver, BroadcastReceiver() {
+
+    // This variable contains the phone number of the User
+    private var phoneNumber: String? = null
 
     /**
      * This function is triggered whenever there is a incoming call in any android
@@ -32,7 +29,7 @@ class BroadcastCallListener : BroadcastReceiver() {
             val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
 
             // Extracting the phone number from the intent extra
-            val phoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)
+            phoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)
 
             // Checking the state of the intent
             if (state == TelephonyManager.EXTRA_STATE_RINGING) {
@@ -47,4 +44,17 @@ class BroadcastCallListener : BroadcastReceiver() {
             }
         }
     }
+
+    override fun doApiCall(phoneNumber: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showUI() {
+        TODO("Not yet implemented")
+    }
+
+    override fun formulateNumber() {
+        TODO("Not yet implemented")
+    }
+
 }

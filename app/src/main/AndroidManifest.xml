@@ -31,7 +31,7 @@
 
         <!-- This service is added show that the app gets notified when someone calls -->
         <service
-            android:name=".services.CallListener"
+            android:name=".feature_call_listener.impl.CallScreenReceiverImpl"
             android:exported="true"
             android:permission="android.permission.BIND_SCREENING_SERVICE">
             <intent-filter>
@@ -41,7 +41,7 @@
 
         <!-- This receiver is made for devices <Android 10 or API 29 -->
         <receiver
-            android:name=".services.BroadcastCallListener"
+            android:name=".feature_call_listener.impl.BroadCastReceiverImpl"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

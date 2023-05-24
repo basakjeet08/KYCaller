@@ -1,11 +1,12 @@
-package com.dev.anirban.kycaller.services
+package com.dev.anirban.kycaller.feature_call_listener.impl
 
 import android.telecom.Call
 import android.telecom.CallScreeningService
 import android.util.Log
 import android.widget.Toast
+import com.dev.anirban.kycaller.feature_call_listener.CallStateReceiver
 
-abstract class CallListenerInterface : CallScreeningService() {
+class CallScreenReceiverImpl : CallStateReceiver, CallScreeningService() {
 
     // This is the type of response that the Call should Get
     private lateinit var responseBuilder: CallResponse.Builder
@@ -46,5 +47,17 @@ abstract class CallListenerInterface : CallScreeningService() {
 
         // This line responds to the call according to the builder
         respondToCall(callDetails, responseBuilder.build())
+    }
+
+    override fun doApiCall(phoneNumber: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showUI() {
+        TODO("Not yet implemented")
+    }
+
+    override fun formulateNumber() {
+        TODO("Not yet implemented")
     }
 }
